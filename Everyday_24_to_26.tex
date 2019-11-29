@@ -1,0 +1,122 @@
+\documentclass[UTF8,aspectratio=169]{ctexbeamer}
+
+\usetheme{Madrid}
+\usecolortheme{whale}
+\usefonttheme{professionalfonts}
+% \usefonttheme{serif}
+
+% \usepackage{fontspec}
+% \setCJKmainfont{Source Han Serif SC}
+\setCJKsansfont{Source Han Sans SC}
+% \setmainfont{TeX Gyre Bonum}
+
+\usepackage{fourier}
+% \usepackage{mathpazo}
+
+\catcode`。=\active
+\def。{．}
+
+\usepackage{mathtools}
+
+\usepackage{setspace}
+\setstretch{1.3}
+
+\newenvironment<>{question}[1][]{\begin{block}#2{问题}}{\end{block}}
+\newenvironment<>{analysis}[1][]{\begin{exampleblock}#2{分析}}{\end{exampleblock}}
+\newenvironment<>{solution}[1][]{\begin{alertblock}#2{解答}}{\end{alertblock}}
+
+\author{王介哲}
+\institute[]{优才教育}
+\title{每日一题}
+\subtitle{24-26}
+\date[Nov 2019]{2019年11月29日}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{每日一题（24）}
+
+    \begin{question}
+        一个自然数的首位数字是\(4\)，将其首位数字移动至末尾之后，得到的新数是原来的\(\dfrac{1}{4}\)，求满足条件的最小自然数。
+    \end{question}\pause
+
+    \begin{analysis}
+        \begin{itemize}[<+-| alert@+>]
+            \item 我们可以设\(n\)是一个\(k\)位自然数，且首位数字是\(4\)，则\(n = 4 \times 10^k + m\)，其中\(k\)和\(m\)都是自然数，\(k \ge 2\)，\(m < 10^k\)。
+            \item 于是，变换之后的数字为\(n' = 10 \times m + 4\)。
+            \item 根据条件，我们有\(n = 4n'\)
+            \item 接下来，分析\(m\)的性质即可。
+        \end{itemize}
+    \end{analysis}
+\end{frame}
+
+\begin{frame}
+    % \frametitle{每日一题（24）}
+    \begin{solution}
+        设 \(n = 4 \times 10^k + m\)，\(n' = 10 \times m + 4\)，其中\(k\)和\(m\)都是自然数，\(k \ge 2\)，\(m < 10^k\)，\\
+        则 \(n = 4n'\)，即 \(4 \times 10^k + m = 4 \times \left(10 \times m + 4\right)\)。\pause
+
+        化简可得 \(39 m = 4 \left(10^k - 4\right)\)。\pause
+
+        因为 \(\left(39,4\right) = 1\)，所以\(39 \mid \left(10^k - 4\right)\)，即 \(10^k \equiv 4 \pmod{39}\)。\pause
+
+        因为 \(10^k \equiv 1^k \equiv 1 \equiv 4 \pmod 3\) 恒成立，所以只需考虑 \(10^k \equiv 4 \pmod{13}\)。\pause
+
+        经验证，\(10^2 \equiv 9 \pmod{13}\)，\(10^3 \equiv 12 \pmod{13}\)，\(10^4 \equiv 3 \pmod{13}\)，\(10^5 \equiv 4 \pmod{13}\)，所以 \(k\) 最小是 \(5\)。\pause
+
+        此时 \[m = \frac{10^5-1}{39} = 10256,\; n = 410256.\]
+    \end{solution}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{每日一题（25）}
+
+    \begin{question}
+        设\(p\)是奇质数，如果\(1+\dfrac{1}{2}+\cdots+\dfrac{1}{p-1}=\dfrac{m}{n}\)，其中\(m\)、\(n\)是互质的正整数，求证：\(p \mid m\)。
+    \end{question} \pause
+
+    \begin{analysis}
+        \begin{itemize}[<+-| alert@+>]
+            \item 基本思路：左边通分，证明分子中含有质因子\(p\)。
+            \item 如果直接全部通分的话，分子会变得复杂，无法判断它的因子。
+            \item 考虑首位配对：\[1+\frac{1}{p-1}=\frac{p}{p-1},\; \frac{1}{2}+\frac{1}{p-2}=\frac{p}{2\left(p-2\right)},\;\cdots\]  发现分子均为\(p\)。
+        \end{itemize}
+    \end{analysis}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{solution}
+        \[
+            \begin{aligned}
+                \frac{m}{n} &= \left(1+\frac{1}{p-1}\right) + \left(\frac{1}{2}+\frac{1}{p-2}\right) + \cdots + \left(\frac{1}{\frac{p-1}{2}}+\frac{1}{\frac{p+1}{2}}\right) \\
+                &= \frac{p}{1\left(p-1\right)} + \frac{p}{2\left(p-2\right)}+ \cdots + \frac{p}{\frac{\left(p-1\right)}{2} \cdot \frac{\left(p+1\right)}{2}} \\ \pause
+                &= p \cdot \left(\frac{1}{1\left(p-1\right)} + \frac{1}{2\left(p-2\right)}+ \cdots + \frac{1}{\frac{\left(p-1\right)}{2} \cdot \frac{\left(p+1\right)}{2}}\right) \\ \pause
+                &= p \cdot \frac{M}{N}
+            \end{aligned}
+        \]
+
+        其中\(\left(M,N\right)=1\)。 \pause
+
+        注意到\(N = \left[1,2,\cdots,p-1\right]\)，且\(p\)为质数，则\(\left(p,N\right)=1\)。 \pause
+
+        所以\(m = pM\)，\(n = N\)，因此\(p \mid M\)。
+    \end{solution}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{每日一题（26）}
+
+    \begin{question}
+        已知\(\overline{abc}\)是\(37\)的倍数，求证：\(\overline{bca}\)也是\(37\)的倍数。
+    \end{question}
+
+\end{frame}
+
+\end{document}
