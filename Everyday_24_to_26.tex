@@ -44,19 +44,20 @@
 
     \begin{analysis}
         \begin{itemize}[<+-| alert@+>]
-            \item 我们可以设\(n\)是一个\(k\)位自然数，且首位数字是\(4\)，则\(n = 4 \times 10^k + m\)，其中\(k\)和\(m\)都是自然数，\(k \ge 2\)，\(m < 10^k\)。
-            \item 于是，变换之后的数字为\(n' = 10 \times m + 4\)。
+            \item 我们可以设\(n\)是一个\(k\)位自然数，且首位数字是\(4\)，则\(n = 4 \times 10^k + m\)。
+            \item 于是，变换之后的数字为\(n' = 10 m + 4\)。
             \item 根据条件，我们有\(n = 4n'\)
-            \item 接下来，分析\(m\)的性质即可。
+            \item 接下来，解关于\(m\)和\(k\)的不定方程即可。
         \end{itemize}
     \end{analysis}
 \end{frame}
 
 \begin{frame}
-    % \frametitle{每日一题（24）}
+    \frametitle{}
+
     \begin{solution}
-        设 \(n = 4 \times 10^k + m\)，\(n' = 10 \times m + 4\)，其中\(k\)和\(m\)都是自然数，\(k \ge 2\)，\(m < 10^k\)，\\
-        则 \(n = 4n'\)，即 \(4 \times 10^k + m = 4 \times \left(10 \times m + 4\right)\)。\pause
+        设 \(n = 4 \times 10^k + m\)，\(n' = 10 m + 4\)，其中\(k\)和\(m\)都是自然数，\(k \ge 2\)，\(m < 10^k\)，\\
+        则 \(n = 4n'\)，即 \(4 \times 10^k + m = 4 \times \left(10  m + 4\right)\)。\pause
 
         化简可得 \(39 m = 4 \left(10^k - 4\right)\)。\pause
 
@@ -64,7 +65,9 @@
 
         因为 \(10^k \equiv 1^k \equiv 1 \equiv 4 \pmod 3\) 恒成立，所以只需考虑 \(10^k \equiv 4 \pmod{13}\)。\pause
 
-        经验证，\(10^2 \equiv 9 \pmod{13}\)，\(10^3 \equiv 12 \pmod{13}\)，\(10^4 \equiv 3 \pmod{13}\)，\(10^5 \equiv 4 \pmod{13}\)，所以 \(k\) 最小是 \(5\)。\pause
+        经验证，\(10^2 \equiv 9 \pmod{13}\)，\(10^3 \equiv 12 \pmod{13}\)，\(10^4 \equiv 3 \pmod{13}\)，\(10^5 \equiv 4 \pmod{13}\)，
+
+        所以 \(k\) 最小是 \(5\)。\pause
 
         此时 \[m = \frac{10^5-1}{39} = 10256,\; n = 410256.\]
     \end{solution}
@@ -115,7 +118,36 @@
 
     \begin{question}
         已知\(\overline{abc}\)是\(37\)的倍数，求证：\(\overline{bca}\)也是\(37\)的倍数。
-    \end{question}
+    \end{question} \pause
+
+    \begin{analysis}
+        \begin{itemize}[<+-| alert@+>]
+            \item 考虑保证倍数关系不改变的变换：
+            \begin{itemize}
+                \item 乘以一个常数，或者除以一个与\(37\)互质的常数
+                \item 加上（或减去）一个\(37\)的倍数
+            \end{itemize}
+            \item \(\overline{abc} = 100a+10b+c\)，\(\overline{bca}=100b+10c+a\)，如何将\(10b+c\)变成\(100b+10c\)？
+            \item 注意：\(37 \mid 111 \mid 999\)
+        \end{itemize}
+    \end{analysis}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{}
+
+    \begin{solution}
+        \[
+            \begin{aligned}
+                \overline{bca} &= 100b+10c+a \\
+                &= 10 \times \left(100a+10b+c\right) - 999a \\
+                &= 10 \overline{abc} - 999a
+            \end{aligned}
+        \] \pause
+
+        因为 \(37 \mid \overline{abc}\)，\(37 \mid 999\)，所以 \(37 \mid \overline{bca}\)。
+    \end{solution}
 
 \end{frame}
 
