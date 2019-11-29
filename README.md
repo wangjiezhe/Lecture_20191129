@@ -35,4 +35,3 @@
 ```tex
 \vspace*{\stretch{1}}
 ```
-
