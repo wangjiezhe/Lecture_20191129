@@ -5,17 +5,17 @@
 \header{}{}{}
 \footer{}{\small \quad 第~\thepage~页(共~\numpages~页)}{}
 
-\usepackage{fourier}
+% \usepackage{fourier}
 
 \catcode`。=\active
 \def。{．}
 
 \usepackage{mathtools}
 
-\renewcommand{\solutiontitle}{\noindent\textbf{解答：}\par\noindent}
+\renewcommand{\solutiontitle}{\noindent{\heiti【解答】}\enspace}
 
 
-\title{每日一题（24-26）（答案版）}
+\title{\huge \heiti 每日一题（24--26）（含解析）}
 \author{}
 \date{}
 
@@ -25,7 +25,11 @@
 
 \thispagestyle{headandfoot}
 
+% \qformat{\Large \textbf{题 \thequestion。}\hfill}
+
 \begin{questions}
+
+\setcounter{question}{23}
 
 \question
 
@@ -68,8 +72,6 @@
 
     所以\(m = pM\)，\(n = N\)，因此\(p \mid m\)。
 \end{solution}
-
-% \newpage
 
 \question
 
