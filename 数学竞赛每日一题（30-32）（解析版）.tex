@@ -1,0 +1,130 @@
+\documentclass[a4paper,answers]{exam}
+\usepackage[UTF8,linespread=1.3]{ctex}
+
+\pagestyle{headandfoot}
+\header{}{}{}
+\footer{}{\small \quad 第~\thepage~页(共~\numpages~页)}{}
+
+\usepackage{fourier}
+% \usepackage{newtxmath}
+\usepackage{ebgaramond}
+
+\catcode`。=\active
+\def。{．}
+
+\usepackage{pgfornament}
+\usepackage{xcolor}
+
+\definecolor{dblue}{HTML}{143268}
+\definecolor{dpink}{HTML}{B43283}
+
+\usepackage{mathtools}
+
+\usepackage{enumitem}
+
+\renewcommand{\solutiontitle}{\noindent{\heiti\color{red}【解析】}\enspace}
+\renewcommand{\questionlabel}{\color{dpink} \thequestion.}
+
+
+\title{\huge \heiti \color{dblue} 每日一题（30--32）（解析版）\\\pgfornament[scale=0.4]{84}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{headandfoot}
+
+% \qformat{\Large \textbf{题 \thequestion。}\hfill}
+
+\begin{questions}
+
+\setcounter{question}{29}
+
+\question
+% Origin: http://lanqi.org/everyday/29019/
+设 $S(x)$ 表示自然数 $x$ 的数字和，求方程 $x+S(x)+S\left(S\left(x\right)\right)=2019$ 的所有自然数解。
+
+\begin{solution}[\stretch{1}]
+    易知 $x$ 为四位数，且 $1900<x<2100$．
+
+    \begin{enumerate}[label={\Roman*)}]
+        \item $x=\overline{19ab}$，此时方程即 \[(1900+10a+b)+(1+9+a+b)+S(10+a+b)=2019,\]
+        注意到 $a+b \leqslant 18$，于是 $S(10+a+b)=S(a+b)+1$，
+        故 \[11a+2b+S(a+b)=108\]
+        \begin{enumerate}[label={\roman*)}]
+            \item 若 $a+b<10$，则有 $S(a+b)=a+b$，化简得 $4a+b=36$，解得 $(a,b)=(4,8) \mbox{或} (7,8)$，均不满足要求；
+            \item 若 $a+b\geqslant 10$，则有 $S(a+b)=a+b-9$，化简得 $4a+b=39$，解得 $(a,b)=(8,7) \mbox{或} (9,3)$。
+        \end{enumerate}
+        所以 $x=1987,1993$ 符合题意。
+        \item $x=\overline{20ab}$，此时方程即\[(2000+10a+b)+(2+0+a+b)+S(2+a+b)=2019,\]即\[11a+2b+S(2+a+b)=17\]
+        \begin{enumerate}[label={\roman*)}]
+            \item 若 $a+b<8$，则有 $S(a+b+2)=a+b+2$，化简得 $4a+b=5$，解得 $(a,b)=(0,5) \mbox{或} (1,1)$；
+            \item 若 $a+b\geqslant 8$，则有 $S(a+b+2)=a+b-7$，化简得 $4a+b=8$，解得 $(a,b)=(0,8)$。
+        \end{enumerate}
+        所以 $x=2005,2008,2011$ 符合题意。
+    \end{enumerate}
+
+    综上所述，所求方程的自然数解为 $1987,1993,2005,2008,2011$。
+
+    \textcolor{red}{\textbf{另解：}}
+    注意到 $x \equiv S(x) \equiv S\left(S\left(x\right)\right) \pmod{9}$，可知 $x \equiv 1 \pmod{3}$。
+    另外，
+    \[
+        \begin{aligned}
+            0<&S(x)\leqslant 1+9+9+9=28, \\
+            0<&S\left(S\left(x\right)\right)\leqslant 1+9=10,
+        \end{aligned}
+    \]
+    故 $1981\leqslant x < 2019$。于是 $x$ 的所有可能值为：
+    \[1981,1984,1987,1990,1993,1996,1999,2002,2005,2008,2011,2014,2017,\]
+    之后逐一验证即可。
+\end{solution}
+
+\question
+% Source: http://lanqi.org/everyday/29045/
+已知 $a,b$ 为自然数，$\dfrac{a+1}{b}+\dfrac{b+1}a$ 为整数，求证：$a,b$ 没有大于 $\sqrt{a+b}$ 的公因数。
+
+\begin{solution}[\stretch{1}]
+    根据题意，有\[\dfrac{a+1}{b}+\dfrac{b+1}a = \dfrac{a^2+b^2+a+b}{ab} \mbox{是整数} \implies ab\mid a^2+b^2+a+b,\]设 $(a,b)=d$，则 $d^2\mid ab$，$d^2\mid a^2$，$d^2\mid b^2$，从而\[d^2\mid a^2+b^2+a+b\implies d^2\mid a+b\implies d\leqslant \sqrt{a+b},\]命题得证．
+\end{solution}
+
+% \question
+% Source: http://lanqi.org/everyday/29043/
+% 需要用到二次不等式的内容
+% 已知 $n^3+2n^2+8n-5$ 是一个正整数的立方，求正整数 $n$ 的的所有可能值。
+% \begin{solution}[\stretch{1}]
+%     考虑到\[(n+1)^3-(n^3+2n^2+8n-5)=(n-2)(n-3),\]而当$n=1$时，$n^3+2n^2+8n-5=6$，当$n\ge 4$时，有\[n^3<n^3+2n^2+8n-5<(n+1)^3,\]因此只有当$n=2,3$时，$n^3+2n^2+8n-5$是正整数的立方．
+% \end{solution}
+
+\question
+% Source: Canadian MO 2019 Problem 2
+设 $a$、$b$ 为正整数，且满足 $a+b^3$ 能被 $a^2+3ab+3b^2-1$ 整除。求证：$a^2+3ab+3b^2-1$ 能被一个大于 $1$ 的整数的立方整除。
+
+\begin{solution}[\stretch{1}]
+    设 $T=a^2+3ab+3b^2-1$，则
+    \[
+        \begin{aligned}
+            \left( a+b \right)^3 &= a^3+3a^2b+3ab^2+b^3 \\
+            &= a\left( a^2+3ab+3b^2 \right) + b^3 \\
+            &= a\left( T+1 \right) + b^3 \\
+            &= aT + \left( a+b^3 \right)
+        \end{aligned}
+    \]
+    由题知，$T \mid a+b^3$，故 $T \mid \left( a+b \right)^3$。
+
+    设 $a+b$ 的质因数分解为 $p_1^{r_1}p_2^{r_2} \cdots p_n^{r_n}$，$T = p_1^{s_1}p_2^{s_2} \cdots p_n^{s_n}$，则对于任意的 $1 \leqslant i \leqslant n$，都有 $s_i \leqslant 3r_i$。
+
+    % 假设对于任意的 $1 \leqslant i \leqslant n$，都有 $s_i \leqslant 2r_i$，则有 $T \mid \left( a+b \right)^2$。但是，$T=a^2+3ab+3b^2-1>a^2+2ab+b^2=\left( a+b \right)^2$，矛盾。
+
+    % 所以存在 $1 \leqslant j \leqslant n$，使得 $s_j > 2r_j \geqslant 2$，即 $s_j \geqslant 3$。故 $p_j^3 \mid T$。
+
+    假设 $T$ 不能被一个大于 $1$ 的整数的立方整除，则对于任意的 $1 \leqslant i \leqslant n$，都有 $s_i \leqslant 2$，于是 $s_i \leqslant 2r_i$，此时有 $T \mid \left( a+b \right)^2$。但是，\[T=a^2+3ab+3b^2-1>a^2+2ab+b^2=\left( a+b \right)^2,\]
+    矛盾，所以假设错误，原命题得证。
+
+\end{solution}
+
+\end{questions}
+
+\end{document}
