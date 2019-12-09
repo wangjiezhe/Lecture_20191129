@@ -1,0 +1,106 @@
+\documentclass[a4paper]{exam}
+\usepackage[UTF8,linespread=1.5]{ctex}
+
+\pagestyle{headandfoot}
+\header{}{}{}
+\footer{}{\small \quad 第~\thepage~页(共~\numpages~页)}{}
+
+\usepackage{fourier}
+% \usepackage{newtxmath}
+% \usepackage{ebgaramond}
+
+\makeatletter
+\providecommand{\nmid}{} % a mock definition
+\renewcommand\nmid{\mathrel{\mathpalette\thiel@nmid\relax}}
+\newcommand{\thiel@nmid}[2]{%
+  \ooalign{%
+    \rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}\cr
+    \hidewidth$\m@th#1|$\hidewidth\cr}%
+}
+\newcommand\wmid{\mathrel{\mathpalette\thiel@mid\relax}}
+\newcommand{\thiel@mid}[2]{%
+  \ooalign{%
+    \hphantom{\rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}}\cr
+    \hidewidth$\m@th#1|$\hidewidth\cr}%
+}
+\makeatother
+
+\usepackage{mathtools}
+% \usepackage{amsmath,amssymb,amsthm}
+% \usepackage{unicode-math}
+% \usepackage{mathabx}
+
+\catcode`。=\active
+\def。{．}
+
+\usepackage{pgfornament}
+\usepackage{xcolor}
+
+\definecolor{dblue}{HTML}{143268}
+\definecolor{dpink}{HTML}{B43283}
+
+\usepackage{enumitem}
+
+\renewcommand{\solutiontitle}{\noindent{\heiti\color{red}【解析】}\enspace}
+\renewcommand{\questionlabel}{\color{dpink} \thequestion.}
+
+
+\title{\huge \heiti \color{dblue} 每日一题（30）\\\pgfornament[scale=0.4]{84}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{headandfoot}
+
+% \qformat{\Large \textbf{题 \thequestion。}\hfill}
+
+\begin{questions}
+
+\setcounter{question}{29}
+
+\question
+% Origin: http://lanqi.org/everyday/29019/
+设 $S(x)$ 表示自然数 $x$ 的数字和，求方程 $x+S(x)+S\left(S\left(x\right)\right)=2019$ 的所有自然数解。
+
+\begin{solution}[\stretch{1}]
+    易知 $x$ 为四位数，且 $1900<x<2100$．
+
+    \begin{enumerate}[label={(\arabic*)}]
+        \item $x=\overline{19ab}$，此时方程即 \[(1900+10a+b)+(1+9+a+b)+S(10+a+b)=2019,\]
+        注意到 $a+b \leqslant 18$，于是 $S(10+a+b)=S(a+b)+1$，
+        故 \[11a+2b+S(a+b)=108\]
+        \begin{enumerate}[label={(\roman*)}]
+            \item 若 $a+b<10$，则有 $S(a+b)=a+b$，化简得 $4a+b=36$，解得 $(a,b)=(4,8) \text{~或~} (7,8)$，均不满足要求；
+            \item 若 $a+b\geqslant 10$，则有 $S(a+b)=a+b-9$，化简得 $4a+b=39$，解得 $(a,b)=(8,7) \text{或} (9,3)$。
+        \end{enumerate}
+        所以 $x=1987,1993$ 符合题意。
+        \item $x=\overline{20ab}$，此时方程即\[(2000+10a+b)+(2+0+a+b)+S(2+a+b)=2019,\]即\[11a+2b+S(2+a+b)=17\]
+        \begin{enumerate}[label={\roman*)}]
+            \item 若 $a+b<8$，则有 $S(a+b+2)=a+b+2$，化简得 $4a+b=5$，解得 $(a,b)=(0,5) \text{或} (1,1)$；
+            \item 若 $a+b\geqslant 8$，则有 $S(a+b+2)=a+b-7$，化简得 $4a+b=8$，解得 $(a,b)=(0,8)$。
+        \end{enumerate}
+        所以 $x=2005,2008,2011$ 符合题意。
+    \end{enumerate}
+
+    综上所述，所求方程的自然数解为 $1987,1993,2005,2008,2011$。
+
+    \textcolor{red}{\textbf{另解：}}
+    注意到 $x \equiv S(x) \equiv S\left(S\left(x\right)\right) \pmod{9}$，可知 $x \equiv 1 \pmod{3}$。
+    另外，
+    \[
+        \begin{aligned}
+            0<&S(x)\leqslant 1+9+9+9=28, \\
+            0<&S\left(S\left(x\right)\right)\leqslant 1+9=10,
+        \end{aligned}
+    \]
+    故 $1981\leqslant x < 2019$。于是 $x$ 的所有可能值为：
+    \[1981,1984,1987,1990,1993,1996,1999,2002,2005,2008,2011,2014,2017,\]
+    之后逐一验证即可。
+\end{solution}
+
+\end{questions}
+
+\end{document}

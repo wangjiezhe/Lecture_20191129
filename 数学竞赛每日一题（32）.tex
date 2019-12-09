@@ -1,0 +1,81 @@
+\documentclass[a4paper]{exam}
+\usepackage[UTF8,linespread=1.5]{ctex}
+
+\pagestyle{headandfoot}
+\header{}{}{}
+\footer{}{\small \quad 第~\thepage~页(共~\numpages~页)}{}
+
+\usepackage{fourier}
+% \usepackage{newtxmath}
+% \usepackage{ebgaramond}
+
+\makeatletter
+\providecommand{\nmid}{} % a mock definition
+\renewcommand\nmid{\mathrel{\mathpalette\thiel@nmid\relax}}
+\newcommand{\thiel@nmid}[2]{%
+  \ooalign{%
+    \rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}\cr
+    \hidewidth$\m@th#1|$\hidewidth\cr}%
+}
+\newcommand\wmid{\mathrel{\mathpalette\thiel@mid\relax}}
+\newcommand{\thiel@mid}[2]{%
+  \ooalign{%
+    \hphantom{\rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}}\cr
+    \hidewidth$\m@th#1|$\hidewidth\cr}%
+}
+\makeatother
+
+\usepackage{mathtools}
+% \usepackage{amsmath,amssymb,amsthm}
+% \usepackage{unicode-math}
+% \usepackage{mathabx}
+
+\catcode`。=\active
+\def。{．}
+
+\usepackage{pgfornament}
+\usepackage{xcolor}
+
+\definecolor{dblue}{HTML}{143268}
+\definecolor{dpink}{HTML}{B43283}
+
+\usepackage{enumitem}
+
+\renewcommand{\solutiontitle}{\noindent{\heiti\color{red}【解析】}\enspace}
+\renewcommand{\questionlabel}{\color{dpink} \thequestion.}
+
+
+\title{\huge \heiti \color{dblue} 每日一题（32）\\\pgfornament[scale=0.4]{84}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{headandfoot}
+
+% \qformat{\Large \textbf{题 \thequestion。}\hfill}
+
+\begin{questions}
+
+\setcounter{question}{31}
+
+\question
+% Origin: 2019 Mock AMC 9 #22, 2019 AMC 10 #25
+设 $n$ 是一个合数，且不能整除 $(n-1)!$，求满足条件的 $n$ 的所有可能值。
+
+\begin{solution}
+    只需要满足存在一个质数 $p$，使得 $p^k\mid n$，但 $p^k\nmid (n-1)!$即可。
+    设 $n=p^k\times q$，其中 $p$ 为质数，$k$、$q$ 为正整数。
+    \begin{enumerate}[label={(\arabic*)}]
+        \item 若 $q\geqslant 2$，则 $p^k\mid p^k(q-1) < n-1$，不满足条件，因此 $q=1$，$n=p^k$。由 $n$ 是合数知 $k\geqslant 2$。
+        \item 若 $p>2$，则 $2p^{k-1}<p^k=n$，故$p^{k-1}\times 2p^{k-1}\mid (n-1)!$，而 $2(k-1)=k+(k-2)\geqslant k$，不满足条件，因此 $p=2$，$n=2^k$。
+        \item 若 $k\geqslant 3$，则 $3\cdot 2^{k-2}<2^k=n$，故 $2^{k-2}\times \left(2\cdot 2^{k-2}\right)\times \left(3\cdot 2^{k-2}\right)\mid (n-1)!$，而 $3(k-2)=3k-6=k+(2k-6)\geqslant k$，不满足条件，因此 $k=2$，$n=4$。
+    \end{enumerate}
+    综上所述，$n=4$。
+\end{solution}
+
+\end{questions}
+
+\end{document}

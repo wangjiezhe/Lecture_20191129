@@ -1,0 +1,74 @@
+\documentclass[a4paper]{exam}
+\usepackage[UTF8,linespread=1.5]{ctex}
+
+\pagestyle{headandfoot}
+\header{}{}{}
+\footer{}{\small \quad 第~\thepage~页(共~\numpages~页)}{}
+
+\usepackage{fourier}
+% \usepackage{newtxmath}
+% \usepackage{ebgaramond}
+
+\makeatletter
+\providecommand{\nmid}{} % a mock definition
+\renewcommand\nmid{\mathrel{\mathpalette\thiel@nmid\relax}}
+\newcommand{\thiel@nmid}[2]{%
+  \ooalign{%
+    \rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}\cr
+    \hidewidth$\m@th#1|$\hidewidth\cr}%
+}
+\newcommand\wmid{\mathrel{\mathpalette\thiel@mid\relax}}
+\newcommand{\thiel@mid}[2]{%
+  \ooalign{%
+    \hphantom{\rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}}\cr
+    \hidewidth$\m@th#1|$\hidewidth\cr}%
+}
+\makeatother
+
+\usepackage{mathtools}
+% \usepackage{amsmath,amssymb,amsthm}
+% \usepackage{unicode-math}
+% \usepackage{mathabx}
+
+\catcode`。=\active
+\def。{．}
+
+\usepackage{pgfornament}
+\usepackage{xcolor}
+
+\definecolor{dblue}{HTML}{143268}
+\definecolor{dpink}{HTML}{B43283}
+
+\usepackage{enumitem}
+
+\renewcommand{\solutiontitle}{\noindent{\heiti\color{red}【解析】}\enspace}
+\renewcommand{\questionlabel}{\color{dpink} \thequestion.}
+
+
+\title{\huge \heiti \color{dblue} 每日一题（31）\\\pgfornament[scale=0.4]{84}}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{headandfoot}
+
+% \qformat{\Large \textbf{题 \thequestion。}\hfill}
+
+\begin{questions}
+
+\setcounter{question}{30}
+
+\question
+% Source: http://lanqi.org/everyday/29045/
+已知 $a,b$ 为自然数，$\dfrac{a+1}{b}+\dfrac{b+1}a$ 为整数，求证：$a,b$ 没有大于 $\sqrt{a+b}$ 的公因数。
+
+\begin{solution}[\stretch{1}]
+    根据题意，有\[\dfrac{a+1}{b}+\dfrac{b+1}a = \dfrac{a^2+b^2+a+b}{ab} \text{是整数} \implies ab\mid a^2+b^2+a+b,\]设 $(a,b)=d$，则 $d^2\mid ab$，$d^2\mid a^2$，$d^2\mid b^2$，从而\[d^2\mid a^2+b^2+a+b\implies d^2\mid a+b\implies d\leqslant \sqrt{a+b},\]命题得证．
+\end{solution}
+
+\end{questions}
+
+\end{document}
