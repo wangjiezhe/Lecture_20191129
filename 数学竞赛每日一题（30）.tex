@@ -1,49 +1,6 @@
 \documentclass[a4paper]{exam}
-\usepackage[UTF8,linespread=1.5]{ctex}
 
-\pagestyle{headandfoot}
-\header{}{}{}
-\footer{}{\small \quad 第~\thepage~页(共~\numpages~页)}{}
-
-\usepackage{fourier}
-% \usepackage{newtxmath}
-% \usepackage{ebgaramond}
-
-\makeatletter
-\providecommand{\nmid}{} % a mock definition
-\renewcommand\nmid{\mathrel{\mathpalette\thiel@nmid\relax}}
-\newcommand{\thiel@nmid}[2]{%
-  \ooalign{%
-    \rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}\cr
-    \hidewidth$\m@th#1|$\hidewidth\cr}%
-}
-\newcommand\wmid{\mathrel{\mathpalette\thiel@mid\relax}}
-\newcommand{\thiel@mid}[2]{%
-  \ooalign{%
-    \hphantom{\rotatebox[origin=c]{40}{$\m@th#1-\mkern-3.5mu$}}\cr
-    \hidewidth$\m@th#1|$\hidewidth\cr}%
-}
-\makeatother
-
-\usepackage{mathtools}
-% \usepackage{amsmath,amssymb,amsthm}
-% \usepackage{unicode-math}
-% \usepackage{mathabx}
-
-\catcode`。=\active
-\def。{．}
-
-\usepackage{pgfornament}
-\usepackage{xcolor}
-
-\definecolor{dblue}{HTML}{143268}
-\definecolor{dpink}{HTML}{B43283}
-
-\usepackage{enumitem}
-
-\renewcommand{\solutiontitle}{\noindent{\heiti\color{red}【解析】}\enspace}
-\renewcommand{\questionlabel}{\color{dpink} \thequestion.}
-
+\usepackage{everyday}
 
 \title{\huge \heiti \color{dblue} 每日一题（30）\\\pgfornament[scale=0.4]{84}}
 \author{}
